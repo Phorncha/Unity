@@ -82,27 +82,29 @@ public class BallControl : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) //บอลชนกับเหรียญ
     {
+
         if (other.gameObject.tag == "Coin")
         {
             coinSound.Play();
-            Destroy(other.gameObject); // ชนแล้วให้ทำลาย
-            
+            Destroy(other.gameObject);
+
             coin++;
             coinUI.text = "Coin" + coin;
 
             targetScore--;
-            if(targetScore == 0)
+            if (targetScore == 0)
             {
                 SceneManager.LoadScene(nextScene);
             }
         }
-        else if (other.gameObject.tag =="Boundary")
+        else if (other.gameObject.tag == "Boundary")
         {
-            //Debug.Log("Restart game");
+            //Debug.Log("Game");
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-        
 
-      this.transform.localScale *= 1f; // ขนาดของลูกบอลเวลาชน
+
+
+        this.transform.localScale *= 1f; // ขนาดของลูกบอลเวลาชน
     }
 }
